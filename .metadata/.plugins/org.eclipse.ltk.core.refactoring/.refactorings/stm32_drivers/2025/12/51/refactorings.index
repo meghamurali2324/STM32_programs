@@ -1,0 +1,5 @@
+1766037121953	Rename resource 'stm32f446xx.h'
+1766038602858	Rename resource 'stm32f4xx_I2C_driver'
+1766038610868	Rename resource 'stm32f4xx_RCC_driver'
+1766038617797	Rename resource 'stm32f4xx_SPI_driver'
+1766038627894	Rename resource 'stm32f4xx_USART_driver'
