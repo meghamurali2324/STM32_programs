@@ -1,0 +1,215 @@
+/*
+ * stm32f44xx.h
+ *
+ *  Created on: Jan 16, 2026
+ *      Author: megha
+ */
+
+#ifndef INC_STM32F44XX_H_
+#define INC_STM32F44XX_H_
+
+#include <stdint.h>
+/*
+ * Memory base address
+ */
+#define FLASH_BASEADDR					0x08000000U
+#define ROM_BASEADDR					0x1FFF0000U
+#define SRAM1_BASEADDR					0x20000000U
+#define SRAM2_BASEADDR					0x2001C000U
+#define SRAM							SRAM1_BASEADDR
+
+
+
+/*
+ * AHBx and APBx Bus Peripheral base addresses
+ */
+#define PERIPH_BASE             0x40000000U
+#define APB1PERIPH_BASE         PERIPH_BASE
+#define APB2PERIPH_BASE         0x40010000U
+#define AHB1PERIPH_BASE         0x40020000U
+#define AHB2PERIPH_BASE         0x50000000U
+
+
+/*
+ * Base addresses of peripherals on AHB1 bus
+ */
+#define GPIOA_BASEADDR					(AHB1PERIPH_BASE + 0x0000)
+#define GPIOB_BASEADDR					(AHB1PERIPH_BASE + 0x0400)
+#define GPIOC_BASEADDR					(AHB1PERIPH_BASE + 0x0800)
+#define GPIOD_BASEADDR					(AHB1PERIPH_BASE + 0x0C00)
+#define GPIOE_BASEADDR					(AHB1PERIPH_BASE + 0x1000)
+#define GPIOF_BASEADDR					(AHB1PERIPH_BASE + 0x1400)
+#define GPIOG_BASEADDR					(AHB1PERIPH_BASE + 0x1800)
+#define GPIOH_BASEADDR					(AHB1PERIPH_BASE + 0x1C00)
+
+#define CRC_BASEADDR					(AHB1PERIPH_BASE + 0x3000)
+#define RCC_BASEADDR					(AHB1PERIPH_BASE + 0x3800)
+
+#define FLASH_INT_REG_BASEADDR			(AHB1PERIPH_BASE + 0x3C00)
+#define BKPSRAM_BASEADDR				(AHB1PERIPH_BASE + 0x4000)
+#define DMA1_BASEADDR					(AHB1PERIPH_BASE + 0x6000)
+#define DMA2_BASEADDR					(AHB1PERIPH_BASE + 0x6400)
+#define USB_OTG_HS_BASEADDR				(AHB1PERIPH_BASE + 0x0000)
+
+/*
+ * Base addresses of peripherals on AHB2 bus
+ */
+#define USB_OTG_FS_BASEADDR				(AHB2PERIPH_BASE + 0x0000)
+#define DCMI_BASEADDR					(AHB2PERIPH_BASE + 0x50000)
+
+/*
+ * Base addresses of peripherals on APB1
+ */
+
+#define SPI2_BASEADDR 						(APB1PERIPH_BASE + 0x3800)
+#define SPI3_BASEADDR 						(APB1PERIPH_BASE + 0x3C00)
+
+#define USART2_BASEADDR 					(APB1PERIPH_BASE + 0x4400)
+#define USART3_BASEADDR 					(APB1PERIPH_BASE + 0x4800)
+
+#define UART4_BASEADDR 					(APB1PERIPH_BASE + 0x4C00)
+#define UART5_BASEADDR 					(APB1PERIPH_BASE + 0x5000)
+
+#define I2C1_BASEADDR 					(APB1PERIPH_BASE + 0x5400)
+#define I2C2_BASEADDR 					(APB1PERIPH_BASE + 0x5800)
+#define I2C3_BASEADDR 					(APB1PERIPH_BASE + 0x5C00)
+
+#define CAN1_BASEADDR 					(APB1PERIPH_BASE + 0x6400)
+#define CAN2_BASEADDR 					(APB1PERIPH_BASE + 0x6800)
+
+/*
+ * Base addresses of peripherals on APB2
+ */
+
+#define USART1_BASEADDR					(APB2PERIPH_BASE + Ox1000)
+#define USART6_BASEADDR					(APB2PERIPH_BASE + Ox1400)
+
+#define ADC1_2_3_BASEADDR				(APB2PERIPH_BASE + Ox2000)
+
+
+#define SPI1_BASEADDR					(APB2PERIPH_BASE + Ox3000)
+#define SPI4_BASEADDR					(APB2PERIPH_BASE + Ox3400)
+
+
+/*
+* Peripheral register definition structures
+*/
+
+/*
+* GPIO Peripheral Register Definition
+*/
+typedef struct
+{
+volatile uint32_t MODER;        /* GPIO port mode register,                   Address offset: 0x00 */
+volatile uint32_t OTYPER;       /* GPIO port output type register,            Address offset: 0x04 */
+volatile uint32_t OSPEEDR;      /* GPIO port output speed register,           Address offset: 0x08 */
+volatile uint32_t PUPDR;        /* GPIO port pull-up/pull-down register,      Address offset: 0x0C */
+volatile uint32_t IDR;          /* GPIO port input data register,             Address offset: 0x10 */
+volatile uint32_t ODR;          /* GPIO port output data register,            Address offset: 0x14 */
+volatile uint32_t BSRR;         /* GPIO port bit set/reset register,          Address offset: 0x18 */
+volatile uint32_t LCKR;         /* GPIO port configuration lock register,     Address offset: 0x1C */
+volatile uint32_t AFR[2];       /* AFR[0]: GPIO alternate function low register, AFR[1]: GPIO alternate function high register, Address offset: 0x20-0x24 */
+} GPIO_RegDef_t;
+
+/*
+* GPIO pointer
+*/
+#define  GPIOA  (GPIO_RegDef_t *)(GPIOA_BASEADDR)
+#define  GPIOB  (GPIO_RegDef_t *)(GPIOB_BASEADDR)
+#define  GPIOC  (GPIO_RegDef_t *)(GPIOC_BASEADDR)
+#define  GPIOD  (GPIO_RegDef_t *)(GPIOD_BASEADDR)
+#define  GPIOE  (GPIO_RegDef_t *)(GPIOE_BASEADDR)
+#define  GPIOF  (GPIO_RegDef_t *)(GPIOF_BASEADDR)
+#define  GPIOG  (GPIO_RegDef_t *)(GPIOG_BASEADDR)
+#define  GPIOH  (GPIO_RegDef_t *)(GPIOH_BASEADDR)
+
+
+
+/*
+* SPI Peripheral register definition
+*/
+
+typedef struct {
+volatile uint32_t CR1;				//SPI control reg 1 0x00
+volatile uint32_t CR2;				//SPI control register 2 0x04
+volatile uint32_t SR;				//SPI status register 0x08
+volatile uint32_t DR;				//SPI data register 0x0c
+volatile uint32_t CRCPR;			//SPI CRC polynomial register 0x10
+volatile uint32_t RXCRCR;			//SPI RX CRC register 0x14
+volatile uint32_t TXCRCR;			//SPI TX CRC register 0x18
+volatile uint32_t I2CFGR;			// SPI_I2S configuration register0x1c
+volatile uint32_t I2SPR;			//SPI_I2S prescaler register 0x20
+
+}SPI_RegDef_t;
+
+
+/*
+ * SPI pointer
+ */
+
+/*
+* 12C Peripheral register definition
+*/
+typedef struct
+{
+volatile uint32_t CR1;				//I2C control register 1  0X00
+volatile uint32_t CR2;				//I2C control register 2  0X04
+volatile uint32_t OAR1;				//I2C own address register 1 0X08
+volatile uint32_t OAR2;				//I2C own address register 2 0X0C
+volatile uint32_t DR;				//I2C data register 0X10
+volatile uint32_t SR1;				//I2C status register 1 0X14
+volatile uint32_t SR2;				//I2C status register 2 0X18
+volatile uint32_t CCR;				//I2C clock control register 0X1C
+volatile uint32_t TRISE;			//I2C TRISE register  0X20
+volatile uint32_t FLTR;				//I2C FLTR register 0X24
+
+}I2C_RegDef_t;
+
+/*
+* UART Peripheral register definition
+*/
+
+typedef struct
+{
+volatile uint32_t SR;				//Status register 0X00
+volatile uint32_t DR;				//Data register 0X04
+volatile uint32_t BRR;				//Baud rate register 0X08
+volatile uint32_t CR1;				//Control register 1 0X0C
+volatile uint32_t CR2;				//Control register 2 0X10
+volatile uint32_t CR3;				//Control register 3 0X14
+volatile uint32_t GTPR;				//Guard time and prescaler register  0X18
+volatile uint32_t FLTR;				//I2C FLTR register 0X24
+
+
+}UART_RegDef_t;
+
+/*
+ * RCC peripheral register definition
+ */
+
+typedef struct
+{
+volatile uint32_t RCC_CR;				//Status register 0X00
+volatile uint32_t RCC_PLLCFGR;				//Data register 0X04
+volatile uint32_t RCC_CFGR;				//Baud rate register 0X08
+volatile uint32_t RCC_CIR;				//Control register 1 0X0C
+volatile uint32_t RCC_AHB1RSTR;				//Control register 2 0X10
+volatile uint32_t RCC_AHB2RSTR;				//Control register 3 0X14
+volatile uint32_t RCC_AHB3RSTR;				//Guard time and prescaler register  0X18
+uint32_t Reserved;
+volatile uint32_t FLTR;				//I2C FLTR register 0X24
+volatile uint32_t FLTR;				//I2C FLTR register 0X24
+volatile uint32_t FLTR;				//I2C FLTR register 0X24
+volatile uint32_t FLTR;				//I2C FLTR register 0X24
+volatile uint32_t FLTR;				//I2C FLTR register 0X24
+volatile uint32_t FLTR;				//I2C FLTR register 0X24
+volatile uint32_t FLTR;				//I2C FLTR register 0X24
+volatile uint32_t FLTR;				//I2C FLTR register 0X24
+volatile uint32_t FLTR;				//I2C FLTR register 0X24
+volatile uint32_t FLTR;				//I2C FLTR register 0X24
+
+
+
+}RCC_RegDef_t;
+
+#endif /* INC_STM32F44XX_H_ */
