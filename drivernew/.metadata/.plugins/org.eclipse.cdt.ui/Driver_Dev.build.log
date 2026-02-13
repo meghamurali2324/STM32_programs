@@ -1,0 +1,17 @@
+00:40:21 **** Incremental Build of configuration Debug for project Driver_Dev ****
+make -j12 all 
+arm-none-eabi-gcc "../Src/GPIO_Toggle.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F4 -DSTM32F446RETx -DNUCLEO_F446RE -c -I../Inc -I"C:/Users/megha/OneDrive/Desktop/STM32_programs/drivernew/Driver_Dev/Drivers/inc" -I"C:/Users/megha/OneDrive/Desktop/STM32_programs/drivernew/Driver_Dev/Inc" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/GPIO_Toggle.d" -MT"Src/GPIO_Toggle.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Src/GPIO_Toggle.o"
+arm-none-eabi-gcc -o "Driver_Dev.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\megha\OneDrive\Desktop\STM32_programs\drivernew\Driver_Dev\STM32F446RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Driver_Dev.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Driver_Dev.elf
+ 
+arm-none-eabi-size  Driver_Dev.elf 
+arm-none-eabi-objdump -h -S Driver_Dev.elf  > "Driver_Dev.list"
+   text	   data	    bss	    dec	    hex	filename
+   1672	      0	   1568	   3240	    ca8	Driver_Dev.elf
+Finished building: default.size.stdout
+ 
+Finished building: Driver_Dev.list
+ 
+
+00:40:25 Build Finished. 0 errors, 0 warnings. (took 3s.569ms)
+
