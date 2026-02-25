@@ -6,16 +6,19 @@
 # Add inputs and outputs from these tool invocations to the build variables 
 C_SRCS += \
 ../Src/GPIO_Toggle.c \
+../Src/gpioint.c \
 ../Src/syscalls.c \
 ../Src/sysmem.c 
 
 OBJS += \
 ./Src/GPIO_Toggle.o \
+./Src/gpioint.o \
 ./Src/syscalls.o \
 ./Src/sysmem.o 
 
 C_DEPS += \
 ./Src/GPIO_Toggle.d \
+./Src/gpioint.d \
 ./Src/syscalls.d \
 ./Src/sysmem.d 
 
@@ -27,7 +30,7 @@ Src/%.o Src/%.su Src/%.cyclo: ../Src/%.c Src/subdir.mk
 clean: clean-Src
 
 clean-Src:
-	-$(RM) ./Src/GPIO_Toggle.cyclo ./Src/GPIO_Toggle.d ./Src/GPIO_Toggle.o ./Src/GPIO_Toggle.su ./Src/syscalls.cyclo ./Src/syscalls.d ./Src/syscalls.o ./Src/syscalls.su ./Src/sysmem.cyclo ./Src/sysmem.d ./Src/sysmem.o ./Src/sysmem.su
+	-$(RM) ./Src/GPIO_Toggle.cyclo ./Src/GPIO_Toggle.d ./Src/GPIO_Toggle.o ./Src/GPIO_Toggle.su ./Src/gpioint.cyclo ./Src/gpioint.d ./Src/gpioint.o ./Src/gpioint.su ./Src/syscalls.cyclo ./Src/syscalls.d ./Src/syscalls.o ./Src/syscalls.su ./Src/sysmem.cyclo ./Src/sysmem.d ./Src/sysmem.o ./Src/sysmem.su
 
 .PHONY: clean-Src
 

@@ -89,10 +89,9 @@ typedef struct
 #define GPIO_PIN_PU         1       /* Pull-up */
 #define GPIO_PIN_PD         2       /* Pull-down */
 
-/******************************************************************************************
- * APIS supported by this driver
- * For more information about the APIs check the function definitions
- ******************************************************************************************/
+/*
+ * API
+ */
 
 /*
  * Peripheral Clock setup

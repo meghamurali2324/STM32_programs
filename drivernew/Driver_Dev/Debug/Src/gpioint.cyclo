@@ -1,0 +1,3 @@
+../Src/gpioint.c:14:6:delay1	2
+../Src/gpioint.c:19:5:main1	1
+../Src/gpioint.c:52:6:EXTI15_10_IRQHandler	1

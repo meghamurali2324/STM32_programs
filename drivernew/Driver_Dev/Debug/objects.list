@@ -1,5 +1,6 @@
 "./Drivers/src/stm32_GPIO_Driver.o"
 "./Src/GPIO_Toggle.o"
+"./Src/gpioint.o"
 "./Src/syscalls.o"
 "./Src/sysmem.o"
 "./Startup/startup_stm32f446retx.o"
